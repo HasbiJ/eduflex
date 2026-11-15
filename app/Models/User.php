@@ -13,4 +13,8 @@ class User extends Authenticatable
 
     // PENTING: cast 'password' => 'hashed' sengaja DIHAPUS,
     // karena kita sudah memakai Hash::make() manual (kalau tidak, password ter-hash dua kali dan login gagal)
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
 }
