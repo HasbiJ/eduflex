@@ -33,7 +33,7 @@
         <div class="hidden md:flex items-center gap-2 text-sm font-semibold">
             @foreach ($menu as $m)
                 <a href="{{ url($m[1]) }}"
-                   class="px-5 py-2 rounded-full {{ request()->is($m[2]) ? 'bg-orange-500 text-white shadow-lg shadow-orange-200' : 'hover:text-orange-500' }}">
+                    class="px-5 py-2 rounded-full {{ request()->is($m[2]) ? 'bg-orange-500 text-white shadow-lg shadow-orange-200' : 'hover:text-orange-500' }}">
                     {{ $m[0] }}
                 </a>
             @endforeach
@@ -42,8 +42,8 @@
         {{-- Profil guru + logout --}}
         <div class="flex items-center gap-3">
             <a href="{{ route('profile.index') }}" class="flex items-center gap-3 hover:opacity-80 transition" title="Lihat Profil">
-                @if(Auth::user()->teacher && Auth::user()->teacher->avatar)
-                    <img src="{{ asset('storage/' . Auth::user()->teacher->avatar) }}" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-orange-200">
+                @if(Auth::user()->user && Auth::user()->user->avatar)
+                    <img src="{{ asset('storage/' . Auth::user()->user->avatar) }}" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-orange-200">
                 @else
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-orange-400 text-white font-bold flex items-center justify-center">
                         {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
@@ -51,7 +51,7 @@
                 @endif
                 <div class="leading-tight text-right">
                     <p class="font-bold text-sm text-slate-800">{{ Auth::user()->name }}</p>
-                    <p class="text-xs text-gray-400">{{ Auth::user()->teacher->nip ?? 'Guru' }}</p>
+                    <p class="text-xs text-gray-400">{{ Auth::user()->user->nip ?? 'Guru' }}</p>
                 </div>
             </a>
             <form action="{{ route('logout') }}" method="POST">
