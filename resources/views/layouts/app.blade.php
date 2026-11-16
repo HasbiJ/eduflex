@@ -41,13 +41,19 @@
 
         {{-- Profil guru + logout --}}
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-orange-400 text-white font-bold flex items-center justify-center">
-                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-            </div>
-            <div class="leading-tight">
-                <p class="font-bold text-sm">{{ Auth::user()->name }}</p>
-                <p class="text-xs text-gray-400">Guru</p>
-            </div>
+            <a href="{{ route('profile.index') }}" class="flex items-center gap-3 hover:opacity-80 transition" title="Lihat Profil">
+                @if(Auth::user()->teacher && Auth::user()->teacher->avatar)
+                    <img src="{{ asset('storage/' . Auth::user()->teacher->avatar) }}" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-orange-200">
+                @else
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-orange-400 text-white font-bold flex items-center justify-center">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                    </div>
+                @endif
+                <div class="leading-tight text-right">
+                    <p class="font-bold text-sm text-slate-800">{{ Auth::user()->name }}</p>
+                    <p class="text-xs text-gray-400">{{ Auth::user()->teacher->nip ?? 'Guru' }}</p>
+                </div>
+            </a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="ml-2 text-xs bg-orange-100 text-orange-600 font-bold px-3 py-1.5 rounded-full hover:bg-orange-200">Logout</button>
