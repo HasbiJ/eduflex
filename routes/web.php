@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LearningVideoController;
 
 // Halaman awal diarahkan ke login
 Route::get('/', fn () => redirect()->route('login'));
@@ -21,6 +22,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth', 'guru'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::resource('learning-videos', LearningVideoController::class);
 
     // ==================================================
     // AREA KERJA ANGGOTA 1 : SUBJECTS
