@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('name');                       // nama mapel, misal: Matematika
             $table->string('class_name');                 // misal: Class XI MIPA 1
             $table->text('description')->nullable();
-            $table->string('class_code')->unique();       // kode unik kelas, misal EDF-7X9K
             $table->string('banner_image')->nullable();
             $table->timestamps();
         });
