@@ -9,7 +9,7 @@
     <div class="flex justify-between items-start gap-4">
         <div>
             <p class="text-sm font-semibold">Subject</p>
-            <p class="text-xl text-gray-700 mt-1 max-w-xl">
+            <p class="text-xs text-gray-700 mt-1 max-w-xl">
                 Expand your knowledge with our curated library of high-quality educational videos led by expert instructors.
             </p>
         </div>
