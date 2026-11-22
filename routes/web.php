@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\SubjectPostController;
 use App\Http\Controllers\TeacherProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,22 +26,8 @@ Route::middleware(['auth', 'guru'])->group(function () {
     // ==================================================
     // AREA KERJA ANGGOTA 1 : SUBJECTS
     // ==================================================
-
-    // CRUD kelas
-    Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects.index');
-    Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects.store');
-    Route::get('/subjects/{id}', [SubjectController::class, 'show'])->name('subjects.show'); // ?tab=stream|classwork|people
-    Route::put('/subjects/{id}', [SubjectController::class, 'update'])->name('subjects.update');
-    Route::delete('/subjects/{id}', [SubjectController::class, 'destroy'])->name('subjects.destroy');
-    Route::post('/subjects/{id}/reset-code', [SubjectController::class, 'resetCode'])->name('subjects.resetCode');
-
-    // Stream & Classwork (pengumuman, task, quiz, module)
-    Route::post('/subjects/{id}/posts', [SubjectController::class, 'storePost'])->name('posts.store');
-    Route::put('/subjects/{id}/posts/{postId}', [SubjectController::class, 'updatePost'])->name('posts.update');
-    Route::delete('/subjects/{id}/posts/{postId}', [SubjectController::class, 'destroyPost'])->name('posts.destroy');
-
-    // Komentar pada postingan
-    Route::post('/subjects/{id}/posts/{postId}/comments', [SubjectController::class, 'storeComment'])->name('comments.store');
+    Route::resource('subjects', SubjectController::class);
+    Route::resource('posts', SubjectPostController::class)->only(['store', 'update', 'destroy']);
 
     // ==================================================
     // AREA KERJA : PROFIL GURU
