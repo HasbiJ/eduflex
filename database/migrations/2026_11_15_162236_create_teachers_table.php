@@ -10,15 +10,13 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nip')->unique();
-            $table->string('title_prefix')->default('Bu');
-            $table->string('subject')->default('Matematika');
+            $table->string('subject');
             $table->string('phone')->nullable();
-            $table->text('address')->nullable();
+            $table->string('address')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('religion')->nullable();
-            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }
