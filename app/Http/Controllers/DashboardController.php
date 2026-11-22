@@ -15,10 +15,10 @@ class DashboardController extends Controller
 
         // Data dummy 4 kartu statistik
         $statistik = [
-            ['judul' => 'Active Quizzes',   'angka' => 1,   'badge' => '2 Expiring'],
-            ['judul' => 'Uploaded Videos',  'angka' => 1,   'badge' => '4.2 TB used'],
-            ['judul' => 'Total Students',   'angka' => 120, 'badge' => '98% Retention'],
-            ['judul' => 'Classes Managed',  'angka' => 3,   'badge' => '+2 this month'],
+            ['judul' => 'Active Quizzes',   'angka' => 0,   'badge' => '2 Expiring'],
+            ['judul' => 'Uploaded Videos',  'angka' => 0,   'badge' => '4.2 TB used'],
+            ['judul' => 'Total Students',   'angka' => 0, 'badge' => '98% Retention'],
+            ['judul' => 'Classes Managed',  'angka' => 0,   'badge' => '+2 this month'],
         ];
 
         return view('dashboard.index', compact('jadwal', 'statistik'));
