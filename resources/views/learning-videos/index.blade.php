@@ -5,9 +5,14 @@
 @section('content')
 <div class="max-w-[1600px] mx-auto px-5 lg:px-10 py-10">
 
-    <h1 class="text-3xl font-extrabold mb-6">
-        Learning Video
-    </h1>
+    <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-extrabold">Learning Video</h1>
+
+    <a href="{{ route('learning-videos.create') }}"
+    class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-xl font-semibold">
+        + Tambah Video
+    </a>
+</div>
 
     @forelse ($videos as $video)
 
